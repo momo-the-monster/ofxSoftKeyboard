@@ -45,7 +45,7 @@ ofxSoftKey::ofxSoftKey(int _key, ofBaseApp* _testapp) {
 			setSize(85, 40);
 			break;
 		case OFXSK_KEY_DELETE: 
-			label = "delete";
+			label = "del";
 			setSize(85, 40);
 			break;
 		case OFXSK_KEY_RETURN: 
