@@ -12,10 +12,10 @@
 #pragma mark CONSTRUCTORS
 
 //--------------------------------------------------------------
-ofxSoftKey::ofxSoftKey(int _key, ofBaseApp* _testapp) {
+ofxSoftKey::ofxSoftKey(int _code, ofBaseApp* _testapp) {
 	
 	testapp = _testapp;
-	key = _key;
+	code = _code;
 	roundness = 0;
 	
 	textColor = ofColor(0);
@@ -31,7 +31,7 @@ ofxSoftKey::ofxSoftKey(int _key, ofBaseApp* _testapp) {
 	padding = new int[4];
 	setPadding(5, 5, 5, 5);
 
-	switch(_key) {
+	switch(_code) {
 		case OFXSK_KEY_SHIFT:
 			label = "shift";
 			setSize(115, 40);
@@ -69,7 +69,7 @@ ofxSoftKey::ofxSoftKey(int _key, ofBaseApp* _testapp) {
 			setSize(40, 40);
 			break;
 		default:
-			label = string(1, key);
+			label = string(1, code);
 			setSize(40, 40);
 			break;
 	}
@@ -126,13 +126,11 @@ void ofxSoftKey::draw() {
 }
 
 
-
-
 #pragma mark SETTERS
 
 //--------------------------------------------------------------
-ofxSoftKey& ofxSoftKey::setKey(char key) {
-	this->key = key;
+ofxSoftKey& ofxSoftKey::setCode(char c) {
+	this->code = c;
 	return *this;
 }
 
@@ -186,7 +184,7 @@ ofxSoftKey& ofxSoftKey::setLabel(string l) {
 void ofxSoftKey::onPress(int x, int y, int button) {
 	
 	
-	switch(key) {
+	switch(code) {
 		case OFXSK_KEY_SHIFT:
 			
 			break;
@@ -224,7 +222,7 @@ void ofxSoftKey::onPress(int x, int y, int button) {
 			testapp->keyPressed('g');
 			break;
 		default:
-			testapp->keyPressed((int)key);
+			testapp->keyPressed((int)code);
 			break;
 	}
 	//ofNotifyEvent(ofEvents.keyPressed, (int)key, testapp);
@@ -233,7 +231,7 @@ void ofxSoftKey::onPress(int x, int y, int button) {
 //--------------------------------------------------------------
 void ofxSoftKey::onRelease(int x, int y, int button) {
 	
-	switch(key) {
+	switch(code) {
 		case OFXSK_KEY_SHIFT:
 			
 			break;
@@ -271,7 +269,7 @@ void ofxSoftKey::onRelease(int x, int y, int button) {
 			testapp->keyReleased('g');
 			break;
 		default:
-			testapp->keyReleased((int)key);
+			testapp->keyReleased((int)code);
 			break;
 	}
 	//ofNotifyEvent(ofEvents.keyReleased, (int)key, testapp));

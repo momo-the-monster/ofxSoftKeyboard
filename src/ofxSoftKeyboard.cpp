@@ -74,6 +74,14 @@ ofxSoftKey& ofxSoftKeyboard::addKey(int c) {
 	return *keys.back();
 }
 
+ofxSoftKey* ofxSoftKeyboard::getKey(int code){
+	for(auto &key: keys){
+		if(key->getCode() == code)
+			return key;
+	}
+	return false;
+}
+
 //--------------------------------------------------------------
 void ofxSoftKeyboard::newRow() {
 	

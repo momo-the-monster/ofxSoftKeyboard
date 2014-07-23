@@ -42,6 +42,7 @@ public:
 	void setRoundness(float r);
 	void setSize(float w, float h);
 	void capitalizeLabels();
+	ofxSoftKey* getKey(int code);
 
 	vector<ofxSoftKey*>getKeys(){
 		return keys;

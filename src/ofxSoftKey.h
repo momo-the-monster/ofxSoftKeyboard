@@ -36,14 +36,15 @@ public:
 	bool isLastInRow;
 	int* padding;
 	
-	ofxSoftKey(int key, ofBaseApp* testapp);
+	ofxSoftKey(int code, ofBaseApp* testapp);
 
 	ofxSoftKey& setPadding(int top, int right, int bottom, int left);
 	ofxSoftKey& padLeft(int left);
 	ofxSoftKey& padRight(int right);
 	string getLabel(){ return label; };
-	
-	ofxSoftKey& setKey(const char key);
+	char getCode(){ return code; };
+
+	ofxSoftKey& setCode(const char key);
 	ofxSoftKey& setTextColor(ofColor c);
 	ofxSoftKey& setTextBGColor(ofColor c);
 	ofxSoftKey& setBorderColor(ofColor c);
@@ -71,7 +72,7 @@ public:
 protected:
 	
 	ofBaseApp* testapp;
-	int key;
+	int code;
 	string label;
 	float roundness;
 	ofColor textColor, textBGColor, borderColor, hoverColor, clickColor;
