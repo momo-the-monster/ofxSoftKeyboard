@@ -172,6 +172,12 @@ ofxSoftKey& ofxSoftKey::setRoundness(float r) {
 	return *this;
 }
 
+//--------------------------------------------------------------
+ofxSoftKey& ofxSoftKey::setLabel(string l) {
+	this->label = l;
+	return *this;
+}
+
 
 
 #pragma mark MOUSE INTERACTION

@@ -49,6 +49,7 @@ public:
 	ofxSoftKey& setHoverColor(ofColor c);
 	ofxSoftKey& setClickColor(ofColor c);
 	ofxSoftKey& setRoundness(float r);
+	ofxSoftKey& setLabel(string l);
 	
 	//void setup();
 	//void update();
