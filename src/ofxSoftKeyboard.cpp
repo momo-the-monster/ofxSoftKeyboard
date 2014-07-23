@@ -147,18 +147,21 @@ void ofxSoftKeyboard::setClickColor(ofColor c){
 	}
 }
 
+//--------------------------------------------------------------
 void ofxSoftKeyboard::setRoundness(float r){
 	for(auto &key: keys){
 		key->setRoundness(r);
 	}
 }
 
+//--------------------------------------------------------------
 void ofxSoftKeyboard::setSize(float w, float h){
 	for(auto &key: keys){
 		key->setSize(w,h);
 	}
 }
 
+//--------------------------------------------------------------
 void ofxSoftKeyboard::capitalizeLabels(){
 	for(auto &key: keys){
 		string label = key->getLabel();
