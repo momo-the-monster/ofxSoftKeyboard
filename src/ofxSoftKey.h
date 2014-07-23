@@ -29,14 +29,13 @@
 #include "ofMain.h"
 #include "ofxMSAInteractiveObject.h"
 
-class testApp;
 class ofxSoftKey : public ofxMSAInteractiveObject {
 public:
 	
 	bool isLastInRow;
 	int* padding;
 	
-	ofxSoftKey(int code, ofBaseApp* testapp);
+	ofxSoftKey(int code);
 
 	ofxSoftKey& setPadding(int top, int right, int bottom, int left);
 	ofxSoftKey& padLeft(int left);
@@ -68,10 +67,10 @@ public:
 	void onReleaseOutside(int x, int y, int button);
 	//void keyPressed( int key );
 	//void keyReleased( int key );
+	void sendKeyEvent(ofKeyEventArgs::Type type);
 
 protected:
 	
-	ofBaseApp* testapp;
 	int code;
 	string label;
 	float roundness;

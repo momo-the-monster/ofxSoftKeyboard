@@ -12,9 +12,8 @@
 #pragma mark CONSTRUCTORS
 
 //--------------------------------------------------------------
-ofxSoftKey::ofxSoftKey(int _code, ofBaseApp* _testapp) {
+ofxSoftKey::ofxSoftKey(int _code) {
 	
-	testapp = _testapp;
 	code = _code;
 	roundness = 0;
 	
@@ -182,97 +181,79 @@ ofxSoftKey& ofxSoftKey::setLabel(string l) {
 
 //--------------------------------------------------------------
 void ofxSoftKey::onPress(int x, int y, int button) {
-	
-	
-	switch(code) {
-		case OFXSK_KEY_SHIFT:
-			
-			break;
-		case OFXSK_KEY_TAB: 
-			testapp->keyPressed('\t');
-			break;
-		case OFXSK_KEY_CAPS: 
-			
-			break;
-		case OFXSK_KEY_DELETE: 
-			testapp->keyPressed(OF_KEY_BACKSPACE);
-			break;
-		case OFXSK_KEY_RETURN: 
-			testapp->keyPressed('\n');
-			break;
-		case OFXSK_KEY_AT:
-			testapp->keyPressed('@');
-			break;
-		case OFXSK_KEY_DOTCOM:
-			testapp->keyPressed('.');
-			testapp->keyPressed('c');
-			testapp->keyPressed('o');
-			testapp->keyPressed('m');
-			break;
-		case OFXSK_KEY_DOTNET:
-			testapp->keyPressed('.');
-			testapp->keyPressed('n');
-			testapp->keyPressed('e');
-			testapp->keyPressed('t');
-			break;
-		case OFXSK_KEY_DOTORG:
-			testapp->keyPressed('.');
-			testapp->keyPressed('o');
-			testapp->keyPressed('r');
-			testapp->keyPressed('g');
-			break;
-		default:
-			testapp->keyPressed((int)code);
-			break;
-	}
-	//ofNotifyEvent(ofEvents.keyPressed, (int)key, testapp);
+	sendKeyEvent(ofKeyEventArgs::Type::Pressed);
 }
 
 //--------------------------------------------------------------
 void ofxSoftKey::onRelease(int x, int y, int button) {
+	sendKeyEvent(ofKeyEventArgs::Type::Released);
+}
+
+void ofxSoftKey::sendKeyEvent(ofKeyEventArgs::Type type){
 	
+	ofEvent<ofKeyEventArgs>&event = (type == ofKeyEventArgs::Type::Pressed) ?  ofEvents().keyPressed : ofEvents().keyReleased;
+	ofKeyEventArgs args;
+	args.type = type;
+
 	switch(code) {
 		case OFXSK_KEY_SHIFT:
 			
 			break;
 		case OFXSK_KEY_TAB: 
-			testapp->keyReleased('\t');
+			args.key = '\t';
+			ofNotifyEvent(event, args, this);
 			break;
 		case OFXSK_KEY_CAPS: 
 			
 			break;
 		case OFXSK_KEY_DELETE: 
-			testapp->keyReleased(OF_KEY_BACKSPACE);
+			args.key = OF_KEY_BACKSPACE;
+			ofNotifyEvent(event, args, this);
 			break;
 		case OFXSK_KEY_RETURN: 
-			testapp->keyReleased('\n');
+			args.key = '\n';
+			ofNotifyEvent(event, args, this);
 			break;
 		case OFXSK_KEY_AT:
-			testapp->keyReleased('@');
+			args.key = '@';
+			ofNotifyEvent(event, args, this);
 			break;
 		case OFXSK_KEY_DOTCOM:
-			testapp->keyReleased('.');
-			testapp->keyReleased('c');
-			testapp->keyReleased('o');
-			testapp->keyReleased('m');
+			args.key = '.';
+			ofNotifyEvent(event, args, this);
+			args.key = 'c';
+			ofNotifyEvent(event, args, this);
+			args.key = 'o';
+			ofNotifyEvent(event, args, this);
+			args.key = 'm';
+			ofNotifyEvent(event, args, this);
 			break;
 		case OFXSK_KEY_DOTNET:
-			testapp->keyReleased('.');
-			testapp->keyReleased('n');
-			testapp->keyReleased('e');
-			testapp->keyReleased('t');
+			args.key = '.';
+			ofNotifyEvent(event, args, this);
+			args.key = 'n';
+			ofNotifyEvent(event, args, this);
+			args.key = 'e';
+			ofNotifyEvent(event, args, this);
+			args.key = 't';
+			ofNotifyEvent(event, args, this);
 			break;
 		case OFXSK_KEY_DOTORG:
-			testapp->keyReleased('.');
-			testapp->keyReleased('o');
-			testapp->keyReleased('r');
-			testapp->keyReleased('g');
+			args.key = '.';
+			ofNotifyEvent(event, args, this);
+			args.key = 'o';
+			ofNotifyEvent(event, args, this);
+			args.key = 'r';
+			ofNotifyEvent(event, args, this);
+			args.key = 'g';
+			ofNotifyEvent(event, args, this);
 			break;
 		default:
-			testapp->keyReleased((int)code);
+			args.key = code;
+			ofNotifyEvent(event, args, this);
 			break;
 	}
-	//ofNotifyEvent(ofEvents.keyReleased, (int)key, testapp));
+
 }
 
 //--------------------------------------------------------------
