@@ -41,6 +41,7 @@ public:
 	ofxSoftKey& setPadding(int top, int right, int bottom, int left);
 	ofxSoftKey& padLeft(int left);
 	ofxSoftKey& padRight(int right);
+	string getLabel(){ return label; };
 	
 	ofxSoftKey& setKey(const char key);
 	ofxSoftKey& setTextColor(ofColor c);

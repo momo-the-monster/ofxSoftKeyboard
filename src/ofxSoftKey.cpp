@@ -179,7 +179,6 @@ ofxSoftKey& ofxSoftKey::setLabel(string l) {
 }
 
 
-
 #pragma mark MOUSE INTERACTION
 
 
