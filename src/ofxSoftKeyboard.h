@@ -41,6 +41,7 @@ public:
 	void setClickColor(ofColor c);
 	void setRoundness(float r);
 	void setSize(float w, float h);
+	void capitalizeLabels();
 
 	vector<ofxSoftKey*>getKeys(){
 		return keys;

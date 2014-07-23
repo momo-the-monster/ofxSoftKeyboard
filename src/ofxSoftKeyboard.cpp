@@ -158,3 +158,13 @@ void ofxSoftKeyboard::setSize(float w, float h){
 		key->setSize(w,h);
 	}
 }
+
+void ofxSoftKeyboard::capitalizeLabels(){
+	for(auto &key: keys){
+		string label = key->getLabel();
+		for (auto & c: label) {
+			c = toupper(c);
+		}
+		key->setLabel( label );
+	}
+}
