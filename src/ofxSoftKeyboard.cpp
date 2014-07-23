@@ -152,3 +152,9 @@ void ofxSoftKeyboard::setRoundness(float r){
 		key->setRoundness(r);
 	}
 }
+
+void ofxSoftKeyboard::setSize(float w, float h){
+	for(auto &key: keys){
+		key->setSize(w,h);
+	}
+}

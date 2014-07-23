@@ -40,6 +40,7 @@ public:
 	void setHoverColor(ofColor c);
 	void setClickColor(ofColor c);
 	void setRoundness(float r);
+	void setSize(float w, float h);
 
 	vector<ofxSoftKey*>getKeys(){
 		return keys;
