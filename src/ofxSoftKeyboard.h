@@ -40,6 +40,10 @@ public:
 	void setHoverColor(ofColor c);
 	void setClickColor(ofColor c);
 	void setRoundness(float r);
+
+	vector<ofxSoftKey*>getKeys(){
+		return keys;
+	}
 	
 	
 protected:
