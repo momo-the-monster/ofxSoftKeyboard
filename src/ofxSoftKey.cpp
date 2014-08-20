@@ -23,6 +23,7 @@ ofxSoftKey::ofxSoftKey(int _code) {
 	hoverColor = ofColor(153);
 	clickColor = ofColor(255, 0, 0);
 	isLastInRow = false;
+	useCustomFont = false;
 	
 	disableAppEvents();
 	enableMouseEvents();
@@ -98,6 +99,11 @@ ofxSoftKey& ofxSoftKey::padRight(int right) {
 	return *this;
 }
 
+void ofxSoftKey::setCustomFont(ofTrueTypeFont &font){
+	customFont = &font;
+	useCustomFont = true;
+}
+
 
 
 #pragma mark APP EVENTS
@@ -120,7 +126,11 @@ void ofxSoftKey::draw() {
 	
 	// Draw the actual letter
 	ofSetColor(textColor);
-	ofDrawBitmapString(label, x+10, y+height-10);
+	if(useCustomFont){
+		customFont->drawString(label, x+10, y+height-10);
+	} else {
+		ofDrawBitmapString(label, x+10, y+height-10);
+	}
 
 }
 

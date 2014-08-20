@@ -33,6 +33,7 @@ class ofxSoftKey : public ofxMSAInteractiveObject {
 public:
 	
 	bool isLastInRow;
+	bool useCustomFont;
 	int* padding;
 	
 	ofxSoftKey(int code);
@@ -55,6 +56,7 @@ public:
 	//void setup();
 	//void update();
 	void draw();
+	void setCustomFont(ofTrueTypeFont &font);
 	//void exit();
 	
 	//void onRollOver(int x, int y);
@@ -68,6 +70,7 @@ public:
 	//void keyPressed( int key );
 	//void keyReleased( int key );
 	void sendKeyEvent(ofKeyEventArgs::Type type);
+	ofTrueTypeFont* customFont;
 
 protected:
 	
